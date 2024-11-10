@@ -45,7 +45,7 @@ class ListArray : public List<T>{
             return out;
         }
 
-        void insert(int pos, T e){
+        void insert(int pos, T e)override{
             if(n+1 >= max){
                 resize(max*2);
             }
@@ -60,14 +60,49 @@ class ListArray : public List<T>{
             }
         }
 
-        void append(T e){
+        void append(T e)override{
             insert(n, e);
         }
 
-        void prepend(T e){
+        void prepend(T e)override{
             insert(0, e);
         }
         
+        T remove(int pos)override{
+            T e = arr[pos];
+            for(int i = pos; i < n-1; i++)//desplaza los elementos a la izquierda de la pos ingresada
+            {
+                arr[i] = arr[i+1];
+            }
+            n--;
+            if (n < max/4){
+                resize(max/2);
+            }
+            return e;
+        }
+
+        T get(int pos)override{
+            return arr[pos];
+        }
+
+        int search(T e)override{
+            for(int i = 0; i < n; i++)
+            {
+                if(arr[i] == e)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        bool empty()override{
+            return n == 0;
+        }
+
+        int size()override{
+            return n;
+        }
 };
 
 #endif
