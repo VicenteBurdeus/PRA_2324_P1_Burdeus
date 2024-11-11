@@ -15,9 +15,7 @@ bool Rectangle::check(Point2D* vs){
     if (aux[0]==aux[2] && aux[1]==aux[3]){
         auxb = true;
     }
-    if (aux[0]==aux[3] && aux[1]==aux[2]){
-        auxb = true;
-    }
+
     return auxb;
 }
 
