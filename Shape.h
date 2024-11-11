@@ -13,7 +13,7 @@ class Shape{
         Shape();
         Shape(std::string color);
         virtual ~Shape();
-        std::string getColor();
+        std::string getColor() const;
         void setColor(std::string c);
         virtual double area() const = 0;
         virtual double perimeter() const = 0;

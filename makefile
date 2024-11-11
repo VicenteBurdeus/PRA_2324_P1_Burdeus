@@ -10,9 +10,9 @@ bin/testList: testList.cpp List.h ListArray.h
 	mkdir -p bin
 	g++ -o bin/testList testList.cpp ListArray.cpp
 
-bin/testListLinked: testListLinked.cpp ListLinked.h
+bin/testListLinked: testListLinked.cpp ListLinked.h ListLinked.cpp
 	mkdir -p bin
-	g++ -o bin/testListLinked testListLinked.cpp ListLinked.h
+	g++ -o bin/testListLinked testListLinked.cpp ListLinked.cpp
 
 Point2D.o: Point2D.h Point2D.cpp
 	g++ -c Point2D.cpp
@@ -25,5 +25,12 @@ bin/testPoint2D: testPoint2D.cpp Point2D.o
 Shape.o: Shape.h Shape.cpp
 	g++ -c Shape.cpp
 
+circle.o: circle.h circle.cpp Shape.o Point2D.o
+	g++ -c circle.cpp
+
+bin/testCircle: testCircle.cpp Shape.o Point2D.o circle.o
+	mkdir -p bin
+	g++ -o bin/testCircle testCircle.cpp Shape.o Point2D.o circle.o
+
 clean:
-	rm -r *.o *.gch bin
+	rm -rf *.o *.gch bin

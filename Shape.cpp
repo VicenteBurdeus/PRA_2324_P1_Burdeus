@@ -11,7 +11,7 @@ Shape::Shape(std::string color){
 Shape::~Shape(){
 }
 
-std::string Shape::getColor(){
+std::string Shape::getColor() const {
     return color;
 }
 
